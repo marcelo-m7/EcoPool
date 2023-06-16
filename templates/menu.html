@@ -1,46 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ecopool+++</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-  </head>
-    <body>
-    <div class="container mt-4" style="margin-bottom:15%">
-			<div class="row align-items-center" style="margin-top:15%">
-			   <div class="col-md-5 mx-auto col-lg-5">
-                   <div class="menu">
-                        <form action="read_plc" method="get">
-                            <div class="form-floating mb-2">
-						       <input type="submit" class="btn btn-outline-dark" style="min-width:200px" value="Read value in plc">
-                            </div>
-                        </form>
-                        <form action="write_plc" method="post">
-                            <div class="form-floating mb-2">
-						       <input type="submit" class="btn btn-outline-dark" style="min-width:200px" value="Write value in plc">
-					        </div>
-                        </form>
-                        <form action="read_emcms" method="get">
-                             <div class="form-floating mb-2">
-						       <input type="submit" class="btn btn-outline-dark" style="min-width:200px" value="Read value in emoncms">
-					         </div>
-                        </form>
-                        <form action="" method="post">
-                             <div class="form-floating mb-2">
-						       <input type="submit" class="btn btn-outline-dark" style="min-width:200px" value="Operating mode">
-					         </div>
-                        </form>
-                        <form action="historico" method="get">
-                             <div class="form-floating mb-2">
-						       <input type="submit" class="btn btn-outline-dark" style="min-width:200px" value="Dashboard">
-					         </div>
-                        </form>
-
-                   </div>
-               </div>
-            </div>
-    </div>
- </body>
-</html>
+<nav>
+      <ul>
+        <li><a href="read_plc.html">Read value in plc</a></li>
+        <li><a href="write_plc.html">Write value in plc</a></li>
+        <li><a href="read_emcms.html">Read value in emoncms</a></li>
+        <li><a href="">Operating mode</a></li>
+        <li><a href="historico.html">Dashboard</a></li>
+        </ul>
+</nav>

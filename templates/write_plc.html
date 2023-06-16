@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +9,18 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="historico">Dashboard</a></li>
+            <li><a href="read_plc">Read value in plc</a></li>
+            <li><a href="write_plc">Write value in plc</a></li>
+            <li><a href="read_emcms">Read value in emoncms</a></li>
+            <li><a href="">Operating mode</a></li>
+            <li><a href="register">Registro</a></li>
+            <li><a href="profile">Profile</a></li>
+            </ul>
+  </nav>
+
       <div class="container mt-4" style="margin-bottom:15%">
 			<div class="row align-items-center" style="margin-top:15%">
 			   <div class="col-md-10 mx-auto col-lg-5">
@@ -23,7 +36,7 @@
                            </div>
                            <div class="form-floating mb-3">
                             <select name="cenario" class="btn btn-outline-dark">
-                                <option value="" disabled selected hidden>Escolha um cenário</option>
+                                <option value="" disabled selected hidden>Choose a scenario</option>
                                 <option value="0">Stall (no water circulation)</option>
                                 <option value="1">Solar => PCM</option>
                                 <option value="2">Solar => Pool</option>
