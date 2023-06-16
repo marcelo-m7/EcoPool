@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+
+       <div class="container mt-4" style="margin-bottom:0%">
+			<div class="row align-items-center" style="margin-top:0%">
+                   <h1>Temperatura [ºC]</h1>
+                        <iframe style="width:580px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://193.136.227.157/emoncms/vis/rawdata?feedid=939&colour=edc240&embed=1"></iframe>
+                   <h1>Humidade Relativa [%]</h1>
+                        <iframe style="width:580px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://193.136.227.157/emoncms/vis/rawdata?feedid=940&fill=0&colour=edc240&dp=2&scale=1&embed=1&apikey="></iframe>
+                   <h1>Velocidade do Vento [m/s]</h1>
+                        <iframe style="width:580px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://193.136.227.157/emoncms/vis/rawdata?feedid=941&fill=0&colour=edc240&dp=2&scale=1&embed=1"></iframe>
+            </div>
+       </div>
+</body>
+</html>

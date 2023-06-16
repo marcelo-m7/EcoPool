@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CHANGE PARAMETERS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+      <div class="container mt-4" style="margin-bottom:15%">
+			<div class="row align-items-center" style="margin-top:15%">
+			   <div class="col-md-10 mx-auto col-lg-5">
+                   <div class="write">
+                       <form action="/write_plc" method="post">
+                           <div class="form-floating mb-3">
+                       	      <input type="text" class="btn btn-outline-dark" name="setpoint" placeholder="Set-point [ºC]">
+  						      <label for="setpoint"></label>
+					       </div>
+                           <div class="form-floating mb-3">
+                       	      <input type="text" class="btn btn-outline-dark" name="diferencial" placeholder="Diferencial &Delta;T[ºC]">
+  						      <label for="diferencial"></label>
+                           </div>
+                           <div class="form-floating mb-3">
+                       	      <input type="text" class="btn btn-outline-dark" name="cenario" placeholder="Cenario">
+  						      <label for="cenario"></label>
+                           </div>
+                           <button class="btn btn-outline-dark" type="submit">change</button>
+                       </form>
+                   </div>
+               </div>
+            </div>
+      </div>
+</body>
+</html>

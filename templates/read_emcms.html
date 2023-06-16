@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>READ EMCMS </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+      <div class="container mt-4" style="margin-bottom:15%">
+			<div class="row align-items-center" style="margin-top:15%">
+			   <div class="col-md-10 mx-auto col-lg-5">
+                   <div class="read_emoncms">
+                     <form action="/read_emcms" method="get">
+                        <div class="form-floating mb-3">
+                       	    <input type="text" size="24" class="btn btn-outline-dark" name="velocidadeVento" placeholder="Velocidade do Vento = {{msg6}}m/s">
+  						    <label for="velocidadeVento"></label>
+					    </div>
+                        <div class="form-floating mb-3">
+                       	    <input type="text" size="24" class="btn btn-outline-dark" name="temperaturaExt" placeholder="Temperatura : {{msg4}}ºC">
+  						    <label for="temperaturaExt"></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                       	    <input type="text" size="24" class="btn btn-outline-dark" name="humidadeExt" placeholder="Humidade = {{msg7}}%">
+  						    <label for="humidadeExt"></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                       	    <input type="text" size="24" class="btn btn-outline-dark" name="set_point" placeholder="Setpoint = {{msg8}} ºC">
+  						    <label for="set_point"></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                       	    <input type="text" size="24" class="btn btn-outline-dark" name="cena_rio" placeholder="Cenario = {{msg9}}">
+  						    <label for="cena_rio"> </label>
+                        </div>
+                     </form>
+                  </div>
+              </div>
+           </div>
+      </div>
+</body>
+</html>

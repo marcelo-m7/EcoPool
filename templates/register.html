@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+		<div class="container mt-4" style="margin-bottom:15%">
+			<div class="row align-items-center" style="margin-top:15%">
+			   <div class="col-md-5 mx-auto col-lg-5">
+				   <div class="login">
+				         <form action ="register" method="POST">
+					          <div class="login_1">
+						          <input type="text" size="14" class="btn btn-outline-dark" name="firstname" placeholder="First name">
+  						          <label for="firtsname"></label>
+								  <input type="text" size="14" class="btn btn-outline-dark" name="lastname" placeholder="Last name">
+  						          <label for="lastname"></label>
+					          </div>
+					          <div class="login_1">
+						          <input type="text" size="14" class="btn btn-outline-dark" name="username" placeholder="Username">
+  						          <label for="username"></label>
+								  <input type="password" size="14" class="btn btn-outline-dark" name="password"placeholder="Password">
+  							      <label for="floatingPassword"></label>
+							  </div>
+							 <div class="login_1">
+						          <input type="text" size="14" class="btn btn-outline-dark" name="country" placeholder="Country">
+  						          <label for="country"></label>
+								  <input type="text" size="14" class="btn btn-outline-dark" name="cidade" placeholder="City">
+  						          <label for="city"></label>
+
+								   <br><br>
+								<button class="btn btn-outline-dark"  type="submit">Register</button>
+					          </div>
+
+				        </form>
+
+			       </div>
+			   </div>
+		    </div>
+	    </div>
+</body>
+</html>
