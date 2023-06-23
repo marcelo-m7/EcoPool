@@ -1,0 +1,5 @@
+"{""Setpoint"":230,""Diferencial"":20,""Cenario"":10}"
+"{""Setpoint"":270,""Diferencial"":30,""Cenario"":40}"
+"{""Setpoint"":240,""Diferencial"":30,""Cenario"":20,""Duration"":0}"
+"{""Setpoint"":240,""Diferencial"":30,""Cenario"":40,""Duration"":0}"
+"{""Setpoint"":300,""Diferencial"":30,""Cenario"":20,""Duration"":1000}"

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e4e8777c-5440-4c86-91bd-4eef9b1ec88a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/ecopol.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/ecopol.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FROLS_V7.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FROLS_V7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HMI.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HMI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WEB.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WEB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../csv_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/../csv_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../files/files.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../files/files.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../files/files1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../files/files1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../files/files2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../files/files2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../piscina_sarimax.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../piscina_sarimax.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../registro_variaveis.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../registro_variaveis.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historico.html" beforeDir="false" afterPath="$PROJECT_DIR$/historico.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu_antigo.html" beforeDir="false" afterPath="$PROJECT_DIR$/menu_antigo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_emcms.html" beforeDir="false" afterPath="$PROJECT_DIR$/read_emcms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_plc.html" beforeDir="false" afterPath="$PROJECT_DIR$/read_plc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/write_plc.html" beforeDir="false" afterPath="$PROJECT_DIR$/write_plc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../varexternas.py" beforeDir="false" afterPath="$PROJECT_DIR$/../varexternas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../varexternas_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../varexternas_v1.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2RbxgWezbDqc9UDkU2BNXnaBlkb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Modificações---Marcelo"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e4e8777c-5440-4c86-91bd-4eef9b1ec88a" name="Changes" comment="" />
+      <created>1687532694328</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687532694328</updated>
+    </task>
+    <servers />
+  </component>
+</project>

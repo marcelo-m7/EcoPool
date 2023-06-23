@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<html lang="pt-PT">
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
+</head>
   <body>
-   <nav>
-      <ul>
-          <li><a href="historico">Dashboard</a></li>
-          <li><a href="read_plc">Read value in plc</a></li>
-          <li><a href="write_plc">Write value in plc</a></li>
-          <li><a href="read_emcms">Read value in emoncms</a></li>
-          <li><a href="">Operating mode</a></li>
-          <li><a href="register">Registro</a></li>
-          <li><a href="profile">Profile</a></li>
-          </ul>
-</nav>
+    <div id="menuContainer"></div>
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var menuContent = xhr.responseText;
+            var menuContainer = document.getElementById("menuContainer");
+            menuContainer.innerHTML = menuContent;
+          }
+        };
+
+        xhr.open("GET", "barra_menu", true);
+        xhr.send();
+    </script>
        <section class="hero is-success is-fullheight">
            <div class="hero-body">
               <div class="container">

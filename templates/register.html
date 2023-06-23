@@ -11,17 +11,21 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="historico">Dashboard</a></li>
-            <li><a href="read_plc">Read value in plc</a></li>
-            <li><a href="write_plc">Write value in plc</a></li>
-            <li><a href="read_emcms">Read value in emoncms</a></li>
-            <li><a href="">Operating mode</a></li>
-            <li><a href="register">Registro</a></li>
-            <li><a href="profile">Profile</a></li>
-            </ul>
-  </nav>
+    <div id="menuContainer"></div>
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var menuContent = xhr.responseText;
+            var menuContainer = document.getElementById("menuContainer");
+            menuContainer.innerHTML = menuContent;
+          }
+        };
+
+        xhr.open("GET", "barra_menu", true);
+        xhr.send();
+    </script>
 		<div class="container mt-4" style="margin-bottom:15%">
 			<div class="row align-items-center" style="margin-top:15%">
 			   <div class="col-md-5 mx-auto col-lg-5">

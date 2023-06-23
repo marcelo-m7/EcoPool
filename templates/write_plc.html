@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<html lang="pt-PT">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,70 +8,64 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="historico">Dashboard</a></li>
-            <li><a href="read_plc">Read value in plc</a></li>
-            <li><a href="write_plc">Write value in plc</a></li>
-            <li><a href="read_emcms">Read value in emoncms</a></li>
-            <li><a href="">Operating mode</a></li>
-            <li><a href="register">Registro</a></li>
-            <li><a href="profile">Profile</a></li>
-            </ul>
-  </nav>
+    <div id="menuContainer"></div>
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var menuContent = xhr.responseText;
+            var menuContainer = document.getElementById("menuContainer");
+            menuContainer.innerHTML = menuContent;
+          }
+        };
+
+        xhr.open("GET", "barra_menu", true);
+        xhr.send();
+    </script>
 
       <div class="container mt-4" style="margin-bottom:15%">
 			<div class="row align-items-center" style="margin-top:15%">
 			   <div class="col-md-10 mx-auto col-lg-5">
                    <div class="write">
                        <form action="/write_plc" method="post">
-                           <div class="form-floating mb-3">
-                       	      <input type="text" class="btn btn-outline-dark" name="setpoint" placeholder="Set-point [ºC]">
-  						      <label for="setpoint"></label>
-					       </div>
-                           <div class="form-floating mb-3">
-                       	      <input type="text" class="btn btn-outline-dark" name="diferencial" placeholder="Diferencial &Delta;T[ºC]">
-  						      <label for="diferencial"></label>
-                           </div>
-                           <div class="form-floating mb-3">
-                            <select name="cenario" class="btn btn-outline-dark">
-                                <option value="" disabled selected hidden>Choose a scenario</option>
-                                <option value="0">Stall (no water circulation)</option>
-                                <option value="1">Solar => PCM</option>
-                                <option value="2">Solar => Pool</option>
-                                <option value="3">PCM => Pool</option>
-                                <option value="4">Solar and PCM => Pool</option>
-                                <option value="5">Collecting floors => Pool
-                                </option>
-                                <option value="6">Solar and Collecting floors => Pool
-                                </option>
-                                <option value="7">PCM and Collecting floors => Pool</option>
-                                <option value="8">Solar and PCM e Collecting floors => Pool
-                                </option>
-                                <option value="9">Solar=> Geo
-
-                                </option>
-                                <option value="10">Geo => Pool
-
-                                </option>
-                                <option value="11">Solar and Geo => Pool
-
-                                </option>
-                                <option value="12">PCM and Geo => Pool
-                                </option>
-                                <option value="13">Solar and PCM e Geo => Pool
-                                </option>
-                                <option value="14">Collecting floors and Geo => Pool
-                                </option>
-                                <option value="15">Solar and Collecting floors and Geo => Pool
-                                </option>
-                                <option value="16">PCM and Collecting floors and Geo=> Pool
-                                </option>
-                                <option value="17">Solar and PCM and Collecting floors and Geo => Pool
-                                </option>
-                           </div>
-                           <button class="btn btn-outline-dark" type="submit">change</button>
-                       </form>
+                               <div class="form-floating mb-3">
+                                  <input type="text" class="btn btn-outline-dark" name="setpoint" placeholder="Set-point [ºC]">
+                                  <label for="setpoint"></label>
+                               </div>
+                               <div class="form-floating mb-3">
+                                  <input type="text" class="btn btn-outline-dark" name="diferencial" placeholder="Diferencial &Delta;T[ºC]">
+                                  <label for="diferencial"></label>
+                               </div>
+                               <div class="form-floating mb-3">
+                                <input type="text" class="btn btn-outline-dark" name="duration" placeholder="Duration [s]">
+                                <label for="duration"></label>
+                             </div>
+                               <div class="form-floating mb-3">
+                                <select name="cenario" class="btn btn-outline-dark">
+                                    <option value="" disabled selected hidden>Choose a scenario</option>
+                                    <option value="0">Stall (no water circulation)</option>
+                                    <option value="1">Solar => PCM</option>
+                                    <option value="2">Solar => Pool</option>
+                                    <option value="3">PCM => Pool</option>
+                                    <option value="4">Solar and PCM => Pool</option>
+                                    <option value="5">Collecting floors => Pool</option>
+                                    <option value="6">Solar and Collecting floors => Pool</option>
+                                    <option value="7">PCM and Collecting floors => Pool</option>
+                                    <option value="8">Solar and PCM e Collecting floors => Pool</option>
+                                    <option value="9">Solar=> Geo</option>
+                                    <option value="10">Geo => Pool</option>
+                                    <option value="11">Solar and Geo => Pool</option>
+                                    <option value="12">PCM and Geo => Pool</option>
+                                    <option value="13">Solar and PCM e Geo => Pool</option>
+                                    <option value="14">Collecting floors and Geo => Pool</option>
+                                    <option value="15">Solar and Collecting floors and Geo => Pool</option>
+                                    <option value="16">PCM and Collecting floors and Geo=> Pool</option>
+                                    <option value="17">Solar and PCM and Collecting floors and Geo => Pool</option>
+                                </select>
+                               </div>
+                                <button class="btn btn-outline-dark" type="submit">Change</button>
+                            </form>
                    </div>
                </div>
             </div>

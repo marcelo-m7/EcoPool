@@ -6,6 +6,8 @@ from csv import writer
 from math import trunc
 from pymodbus.client import ModbusTcpClient
 from flask import Flask, g, redirect, render_template, request, session, url_for
+from csv import writer
+
 
 client = ModbusTcpClient("192.168.1.3", timeout=3)
 x = client.connect()
@@ -28,7 +30,6 @@ class User:
 users = []
 users.append(User(id=1, username='client', password='password'))
 users.append(User(id=2, username='admin', password='admin'))
-users.append(User(id=3, username='jailson', password='password'))
 
 app = Flask(__name__)
 app.secret_key = 'somesecretkeythatonlyishouldknow'
@@ -63,7 +64,7 @@ def profile():
     if not g.user:
         return redirect(url_for('login'))
 
-    return render_template('menu.html')
+    return render_template('menu_antigo.html')
 
 @app.route("/write_plc", methods=['GET', 'POST'])
 def write_plc():
@@ -71,6 +72,7 @@ def write_plc():
         setpoint = request.form.get('setpoint')
         diferencial = request.form.get('diferencial')
         cenario = request.form.get('cenario')
+        duration = request.form.get('duration')
         fator = 10
 
         if setpoint is not None and diferencial is not None:
@@ -85,6 +87,7 @@ def write_plc():
                 ddiferencial = int(diferencial) * fator
                 ccenario = int(cenario) * fator
 
+
             nregistro1 = 58  # number register for setpoint
             nregistro2 = 59  # number register for diferencial
             nregistro206 = 60  # number register for cenario
@@ -92,16 +95,15 @@ def write_plc():
             nregistro60 = client.write_register(nregistro2, ddiferencial)
             nregistro206 = client.write_register(nregistro206, ccenario)
 
-            data_json = '{"Setpoint":' + str(setpoint) + ',"Diferencial":' + str(ddiferencial) + ',"Cenario":' + str(
-                ccenario) + '}'
-            emon_link = 'http://' + emon_ip + '/emoncms/input/post?node=' + node_id + '&fulljson=' + str(
-                data_json) + "&apikey=" + str(emon_apikey)
+            data_json = '{"Setpoint":' + str(setpoint) + ',"Diferencial":' + str(ddiferencial) + ',"Cenario":' + str(ccenario) + ',"Duration":' + str(duration) + '}'
+            emon_link = 'http://' + emon_ip + '/emoncms/input/post?node=' + node_id + '&fulljson=' + str(data_json) + "&apikey=" + str(emon_apikey)
             pedido = requests.get(emon_link)
 
             registro_variaveis = 'registro_variaveis.csv'
             with open(registro_variaveis, 'a', newline='') as dados:
                 writer_object = writer(dados)
                 writer_object.writerow([data_json])
+
 
     return render_template('write_plc.html')
 
@@ -151,10 +153,19 @@ def historico():
 
 @app.route('/menu', methods=['GET'])
 def menu():
-    return render_template('menu.html')
+    return render_template('menu_antigo.html')
 
 @app.route("/register", methods=['GET'])
 def register():
     return render_template("register.html")
+
+@app.route("/profile_page", methods=['GET'])
+def profile_page():
+    return render_template("profile.html")
+
+@app.route('/barra_menu', methods=['GET'])
+def barra_menu():
+    return render_template('novo_menu.html')
+
 
 app.run(port=5000, host='localhost', debug=True)
