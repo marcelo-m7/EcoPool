@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="pt-PT"></html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+    <div id="menuContainer"></div>
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var menuContent = xhr.responseText;
+            var menuContainer = document.getElementById("menuContainer");
+            menuContainer.innerHTML = menuContent;
+          }
+        };
+
+        xhr.open("GET", "barra_menu", true);
+        xhr.send();
+    </script>
+
+<h1>Scenarios's Records</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Time</th>
+                <th>Setpoint</th>
+                <th>Diferencial</th>
+                <th>Scenario</th>
+                <th>Duration [s]</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

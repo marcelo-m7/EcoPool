@@ -7,7 +7,7 @@ from math import trunc
 from pymodbus.client import ModbusTcpClient
 from flask import Flask, g, redirect, render_template, request, session, url_for
 from csv import writer
-
+import sqlite3
 
 client = ModbusTcpClient("192.168.1.3", timeout=3)
 x = client.connect()
@@ -18,6 +18,7 @@ emon_ip = "193.136.227.157"
 emon_apikey = "95ca8292ee40f87f6ff0d1a07b2dca6f"  # emon ecopool
 node_id = "ecopool"
 
+
 class User:
     def __init__(self, id, username, password):
         self.id = id
@@ -27,12 +28,16 @@ class User:
     def __repr__(self):
         return f'<User: {self.username}>'
 
+
 users = []
 users.append(User(id=1, username='client', password='password'))
 users.append(User(id=2, username='admin', password='admin'))
 
 app = Flask(__name__)
 app.secret_key = 'somesecretkeythatonlyishouldknow'
+
+ecopool = 'ecopool.db'
+
 
 @app.before_request
 def before_request():
@@ -42,6 +47,32 @@ def before_request():
         user = [x for x in users if x.id == session['user_id']][0]
         g.user = user
 
+
+def connect_db():
+    pass
+
+
+@app.teardown_appcontext
+def close_connection_db(exception):
+    pass
+
+
+@app.route('/scenarios_records.html')
+def scenarios_records():
+    conn = sqlite3.connect('ecopool.db')
+    cursor = conn.cursor()
+
+    # Executar consulta SQL para obter os dados da tabela registro_variaveis
+    cursor.execute("SELECT * FROM registro_variaveis")
+    data = cursor.fetchall()
+
+    # Fechar a conexão com o banco de dados
+    cursor.close()
+    conn.close()
+
+    return render_template('scenarios_records.html', data=data)
+
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -49,6 +80,18 @@ def login():
 
         username = request.form['username']
         password = request.form['password']
+
+        # conn = sqlite3.connect(ecopool)
+        # cursor = conn.cursor()
+        #
+        # cursor.execute('SELECT user_id, username, password FROM users WHERE username = ? AND password = ?',
+        #                (username, password))
+        # result = cursor.fetchone()
+        #
+        # if result is not None:
+        #     user = User(id=result[0], username=result[1], password=result[2])
+        #     session['user_id'] = user.id
+        #     return redirect(url_for('profile'))
 
         user = [x for x in users if x.username == username][0]
         if user and user.password == password:
@@ -59,12 +102,14 @@ def login():
 
     return render_template('login.html')
 
+
 @app.route('/menu')
 def profile():
     if not g.user:
         return redirect(url_for('login'))
 
     return render_template('menu_antigo.html')
+
 
 @app.route("/write_plc", methods=['GET', 'POST'])
 def write_plc():
@@ -87,7 +132,6 @@ def write_plc():
                 ddiferencial = int(diferencial) * fator
                 ccenario = int(cenario) * fator
 
-
             nregistro1 = 58  # number register for setpoint
             nregistro2 = 59  # number register for diferencial
             nregistro206 = 60  # number register for cenario
@@ -95,17 +139,34 @@ def write_plc():
             nregistro60 = client.write_register(nregistro2, ddiferencial)
             nregistro206 = client.write_register(nregistro206, ccenario)
 
-            data_json = '{"Setpoint":' + str(setpoint) + ',"Diferencial":' + str(ddiferencial) + ',"Cenario":' + str(ccenario) + ',"Duration":' + str(duration) + '}'
-            emon_link = 'http://' + emon_ip + '/emoncms/input/post?node=' + node_id + '&fulljson=' + str(data_json) + "&apikey=" + str(emon_apikey)
+            data_json = '{"Setpoint":' + str(setpoint) + ',"Diferencial":' + str(ddiferencial) + ',"Cenario":' + str(
+                ccenario) + ',"Duration":' + str(duration) + '}'
+            emon_link = 'http://' + emon_ip + '/emoncms/input/post?node=' + node_id + '&fulljson=' + str(
+                data_json) + "&apikey=" + str(emon_apikey)
             pedido = requests.get(emon_link)
 
+            # Registro das variáveis em ficheiro csv
             registro_variaveis = 'registro_variaveis.csv'
             with open(registro_variaveis, 'a', newline='') as dados:
                 writer_object = writer(dados)
                 writer_object.writerow([data_json])
 
+            # Registro das variáveis em banco de dados em SQLite
+
+            conn = sqlite3.connect(ecopool)
+            cursor = conn.cursor()
+
+            from datetime import date
+
+            current_date = date.today()
+            cursor.execute('INSERT INTO registro_variaveis (setpoint, diferencial, cenario, date) VALUES (?, ?, ?, ?)',
+                           (setpoint, diferencial, cenario, current_date))
+
+            conn.commit()
+            conn.close()
 
     return render_template('write_plc.html')
+
 
 @app.route("/read_plc", methods=['GET'])
 def read_plc():
@@ -123,6 +184,7 @@ def read_plc():
         differencial = trunc(int(diferencial) / 10)
 
     return render_template('read_plc.html', setpoint=set_point, diferencial=differencial, cenario=cena_rio)
+
 
 @app.route("/read_emcms", methods=['GET'])
 def read_emcms():
@@ -147,21 +209,26 @@ def read_emcms():
     return render_template('read_emcms.html', msg4=temperaturaExt, msg6=velocidadeExt, msg7=humidadeExt,
                            msg8=set_point, msg9=cena_rio)
 
+
 @app.route("/historico", methods=['GET'])
 def historico():
     return render_template("historico.html")
+
 
 @app.route('/menu', methods=['GET'])
 def menu():
     return render_template('menu_antigo.html')
 
+
 @app.route("/register", methods=['GET'])
 def register():
     return render_template("register.html")
 
+
 @app.route("/profile_page", methods=['GET'])
 def profile_page():
     return render_template("profile.html")
+
 
 @app.route('/barra_menu', methods=['GET'])
 def barra_menu():
