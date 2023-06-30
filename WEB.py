@@ -28,6 +28,10 @@ class User:
     def __repr__(self):
         return f'<User: {self.username}>'
 
+    def autentication(self):
+        pass
+
+
 
 users = []
 users.append(User(id=1, username='client', password='password'))
