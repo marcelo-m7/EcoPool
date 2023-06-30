@@ -32,4 +32,36 @@ body{
     text-align: center;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #38444d;
+  opacity: 0.5;
+}
 
+li {
+  float: left;
+}
+
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #cbcbcb;
+}
+
+
+li a {
+display: inline-block;
+color: rgb(0, 0, 0);
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-weight: bold;
+opacity: 1;
+
+}
